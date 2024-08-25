@@ -1,0 +1,61 @@
+@model PC1.Models.Bolsa
+@{
+    ViewBag.Title = "Operar en la bolsa";
+}
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-controller="Bolsa" asp-a  ction="Ordenar" method="post">
+                <div class="form-group">
+                        <label class="control-label">Nombre</label>
+                        <input asp-for="Nombres" class="form-control" />
+                </div>
+                <div class="form-group">
+                        <label class="control-label">Correo</label>
+                        <input asp-for="Correo" class="form-control" />
+                </div>
+                <div class="form-group">
+                         <label class="control-label">Selecciona opciones:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" />
+                        <label asp-for="Syp" class="form-check-label">S&P - 500$</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" />
+                        <label asp-for="Dowjones" class="form-check-label">Down Jones - 300$</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" />
+                        <label asp-for="Bonos" class="form-check-label">Bono Us - 120$</label>
+                </div>
+                <div class="form-group">
+                        <label class="control-label">Monto a abonar</label>
+                        <input asp-for="MontoAbonar" class="form-control" />
+                </div>
+                <div class="form-group">
+                        <label>Seleccione su Fecha de Operacion</label>
+                        <input type="date" asp-for = "FechaOperacion" class="form-control"> 
+                </div>
+                 <button type="submit" class="btn btn-primary">Invertir</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{   <div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6 border">
+    <h3>Resultados</h3>
+    <p><strong>Nombre:</strong> @Model.Nombres</p>
+    <p><strong>Correo:</strong> @Model.Correo</p>
+    <p><strong>Fecha de Operación:</strong> @Model.FechaOperacion</p>
+    <p><strong>Monto Abonado:</strong> $@Model.MontoAbonar</p>
+    <p><strong>IGV:</strong> $@Model.Igv</p>
+    <p><strong>Comisión:</strong> $@Model.Cobro</p>
+    <p><strong>Total a Pagar:</strong> $@Model.Total</p>
+    </div>
+    </div>
+    </div>
+}
